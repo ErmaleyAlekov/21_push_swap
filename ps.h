@@ -17,5 +17,6 @@ void    sm(t_stack *a, t_stack *b, char c);
 void    rm(t_stack *a, t_stack *b, char c);
 void    rrm(t_stack *a, t_stack *b, char c);
 void    pm(t_stack *a, t_stack *b, char c);
+void    forthree(t_stack *a, t_stack *b);
 
 #endif

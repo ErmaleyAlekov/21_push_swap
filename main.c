@@ -44,7 +44,8 @@ int main(int argc, char **argv)
 {
     t_stack a;
     t_stack b;
-    int i = 0;
+    // int i = 0;
+    // int j = 0;
 
     if (init_stack(&a, &b, argc - 1))
         exit_prog(&a, &b);
@@ -52,8 +53,14 @@ int main(int argc, char **argv)
         exit_prog(&a, &b);
     if (check_sort(0, &a))
         return (0);
-    pm(&a, &b, 'a');
-    while (i < a.n)
-        printf("%d\n", a.number[i++]);
+    if (a.n <= 3)
+        forthree(&a, &b);
+    // sm(&a, &b, 'a');
+    // pm(&a, &b, 'a');
+    // while (i < a.n)
+    //     printf("a->%d ", a.number[i++]);
+    // // while (j < a.n)
+    // //     printf("b->%d ", b.number[j++]);
+    // printf("\n");
     return (0);
 }

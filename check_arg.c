@@ -11,7 +11,7 @@ static int isnumbs(int argc, char **str)
         j = -1;
         if (*(*(str + i)) == '-' || *(*(str + i)) == '+')
             j++;
-        while (*(*(str + i) + ++j)) 
+        while (*(*(str + i) + ++j))
             if (!(ft_isdigit(*(*(str + i) + j))))
                 return (1);
     }
@@ -54,6 +54,29 @@ static int isrepeated(t_stack *a, t_stack *b)
     return (0);
 }
 
+static void find_places(t_stack *a, t_stack *b)
+{
+    int ale;
+    int i;
+    int j;
+
+    i = -1;
+    while (++i < a->n)
+    {
+        j = -1;
+        ale = 0;
+        while (++j < a->n)
+        {
+            if (a->number[i] > a->number[j])
+                ale++;
+        }
+        b->number[i] = ale + 1;
+    }
+    i = -1;
+    while(++i < a->n)
+        a->number[i] = b->number[i];
+}
+
 int check_arg(int argc, char **argv, t_stack *a, t_stack *b)
 {
     if (isnumbs(argc, argv))
@@ -62,5 +85,6 @@ int check_arg(int argc, char **argv, t_stack *a, t_stack *b)
         return (1);
     if (isrepeated(a, b))
         return (1);
+    find_places(a, b);
     return (0);
 }
